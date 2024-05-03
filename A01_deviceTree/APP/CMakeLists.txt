@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-#set(CMAKE_INSTALL_PREFIX "/home/xqyr/study/new_study/flie/nfs/root/opt" CACHE PATH "Installation prefix")
+set(CMAKE_INSTALL_PREFIX "/home/xqyr/study/new_study/flie/nfs/root/opt" CACHE PATH "Installation prefix")
 project(ledAPP)
 
 set(CMAKE_CXX_STANDARD 17)

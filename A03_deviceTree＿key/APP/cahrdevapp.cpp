@@ -7,11 +7,11 @@ charDeviceAPP::charDeviceAPP(string  filename):
 
 }
 int charDeviceAPP::openDev(int model) {
-    fd= open(filename.data(),model);
-    if(fd<0){
-        std::cout<<"openDev error = "<<fd<<std::endl;
-        return -1;
-    }
+   fd= open(filename.data(),model);
+   if(fd<0){
+       std::cout<<"openDev error = "<<fd<<std::endl;
+       return -1;
+   }
     printf("openDev success = %d\n",fd);
     oepned = true;
     return 0;
@@ -40,7 +40,7 @@ charDeviceAPP::~charDeviceAPP() {
 
 int charDeviceAPP::closeDev() {
     if(!oepned){
-        return  close(fd);
+      return  close(fd);
     }
     return 0;
 }

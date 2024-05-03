@@ -6,8 +6,14 @@
 #define LEDAPP_BEEPAPP_H
 
 #include "chardevapp.h"
-class beepAPP : public charDeviceAPP{
-using charDeviceAPP::charDeviceAPP;
+class keyAPP : public charDeviceAPP{
+    using charDeviceAPP::charDeviceAPP;
+public:
+    typedef enum{
+        no_key = 0,
+        key0
+    }KEY_VALUE;
+    KEY_VALUE value;
 };
 
 

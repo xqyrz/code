@@ -13,7 +13,8 @@ struct file_operations gpioled_fops = {
      .open = dev_open,
     //  .read = dev_read,
     .write = dev_write,
-    // .release = dev_release,
+    .release = dev_release,
+    
 };
 int __init led_init(void)
 {
@@ -35,6 +36,7 @@ faild_initCharDevice:
 
 void __exit led_exit(void)
 {
+	gpio_free(ledgpio->treeInfo.gpio_index);	
         exitCharDevice(ledgpio);
     printk("exit led\r\n");
 }
