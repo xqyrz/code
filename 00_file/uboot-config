@@ -1,0 +1,46 @@
+baudrate=115200
+board_name=EVK
+board_rev=14X14
+boot_fdt=try
+bootargs=console=ttymxc0,115200 root=/dev/nfs rw nfsroot=192.168.2.8:/home/xqyr/study/new_study/flie/nfs/root,v3 ip=192.168.2.55:192.168.2.8:192.168.2.1:255.255.255.0::eth0:off
+bootcmd=tftp 80800000 zImage; tftp 83000000 imx6ull-14x14-xiong-emmc.dtb; bootz 80800000 - 83000000
+bootcmd_mfg=run mfgtool_args;bootz ${loadaddr} ${initrd_addr} ${fdt_addr};
+bootdelay=1
+bootscript=echo Running bootscript from mmc ...; source
+console=ttymxc0
+ethact=FEC1
+ethaddr=b8:ae:1d:01:00:00
+ethprime=FEC
+fdt_addr=0x83000000
+fdt_file=imx6ull-14x14-evk.dtb
+fdt_high=0xffffffff
+fileaddr=80800000
+filesize=552f80
+findfdt=if test $fdt_file = undefined; then if test $board_name = EVK && test $board_rev = 9X9; then setenv fdt_file imx6ull-9x9-evk.dtb; fi; if test $board_name = EVK && test $board_rev = 14X14; then se;
+gatewayip=192.168.2.1
+get_cmd=dhcp
+image=zImage
+initrd_addr=0x83800000
+initrd_high=0xffffffff
+ip_dyn=yes
+ipaddr=192.168.2.55
+loadaddr=0x80800000
+loadbootscript=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};
+loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}
+loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}
+mfgtool_args=setenv bootargs console=${console},${baudrate} rdinit=/linuxrc g_mass_storage.stall=0 g_mass_storage.removable=1 g_mass_storage.file=/fat g_mass_storage.ro=1 g_mass_storage.idVendor=0x066F g 
+mmcargs=setenv bootargs console=${console},${baudrate} root=${mmcroot}
+mmcautodetect=yes
+mmcboot=echo Booting from mmc ...; run mmcargs; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr} - ${fdt_addr}; else if test ${boot_fdt} = try; then bootz;;
+mmcdev=0
+mmcpart=1
+mmcroot=/dev/mmcblk0p2 rootwait rw
+netargs=setenv bootargs console=${console},${baudrate} root=/dev/nfs ip=dhcp nfsroot=${serverip}:${nfsroot},v3,tcp
+netboot=echo Booting from net ...; run netargs; if test ${ip_dyn} = yes; then setenv get_cmd dhcp; else setenv get_cmd tftp; fi; ${get_cmd} ${image}; if test ${boot_fdt} = yes || test ${boot_fdt} = try; ;
+netmask=255.255.255.0
+nfsboot=v3
+panel=TFT43AB
+script=boot.scr
+serverip=192.168.2.8
+
+Environment size: 2700/8188 bytes
