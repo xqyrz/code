@@ -1,7 +1,7 @@
 KERNELDIR := /home/xqyr/study/new_study/xiong_lib/linux-imx-rel_imx_4.1.15_2.1.0_ga
 CURRENT_PATH := $(shell pwd)
 LINUX_PATH := /home/xqyr/study/new_study/flie/nfs/root
-name  = charled
+name  = charbeep
 
 obj-m += ${name}.o
 
